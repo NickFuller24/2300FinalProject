@@ -30,6 +30,18 @@ input[type=submit] {
   border-radius: 25px;
 }
 
+input[type=submit]:hover {
+  cursor: pointer;
+}
+
+input[type=file] {
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding-right: 0.5rem;
+}
+
 p {
   font-size: 2rem;
   font-family: 'Montserrat', sans-serif;
