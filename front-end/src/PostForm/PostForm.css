@@ -1,0 +1,57 @@
+label {
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 0.5rem;
+  display: block;
+}
+
+.radio {
+  display: inline;
+  padding-left: 0.25rem;
+}
+
+input[type=text] {
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+input[type=submit] {
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 2rem;
+  grid-row-start: 2;
+  grid-column-start: 3;
+  background-color: #FCBF49;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 25px;
+}
+
+p {
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 0.5rem;
+  display: block;
+  margin-bottom: 0;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 10% 35% 10% 35% 10%;
+  grid-template-rows: auto 5rem;
+}
+
+#leftColumn {
+  grid-column-end: 3;
+}
+
+#rightColumn {
+  grid-column-start: 4;
+}
+
+#typeForm {
+  margin-bottom: 1.5rem;
+}
