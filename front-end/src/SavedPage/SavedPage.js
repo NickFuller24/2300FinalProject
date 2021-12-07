@@ -1,14 +1,14 @@
 import NavBar from '../NavBar/NavBar';
 import Header from '../Header/Header';
 
-function HomePage() {
+function SavedPage() {
   return (
-    <div className="HomePage">
+    <div className="SavedPage">
       <Header/>
       <NavBar/>
-      <h1>This will be the list of all files</h1>
+      <h1>Saved Material</h1>
     </div>
   );
 }
 
-export default HomePage;
+export default SavedPage;

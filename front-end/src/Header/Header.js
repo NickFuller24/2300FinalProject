@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HeaderWrapper = styled.div`
   background-color: #EAE2B7;
@@ -13,10 +14,17 @@ const Title = styled.h1`
   font-family: 'Montserrat', sans-serif;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #003049;
+`;
+
 const Header = () => {
   return (
     <HeaderWrapper>
-      <Title>Test Bank</Title>
+      <Title>
+        <StyledLink to="/">Test Bank</StyledLink>
+      </Title>
     </HeaderWrapper>
   );
 };

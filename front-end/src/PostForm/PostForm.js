@@ -1,14 +1,14 @@
 import NavBar from '../NavBar/NavBar';
 import Header from '../Header/Header';
 
-function HomePage() {
+function PostForm() {
   return (
-    <div className="HomePage">
+    <div className="PostForm">
       <Header/>
       <NavBar/>
-      <h1>This will be the list of all files</h1>
+      <h1>Post a Test</h1>
     </div>
   );
 }
 
-export default HomePage;
+export default PostForm;
