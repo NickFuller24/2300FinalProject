@@ -1,12 +1,9 @@
-import NavBar from '../NavBar/NavBar';
-import Header from '../Header/Header';
+import React from 'react';
 import './PostForm.css';
 
 function PostForm() {
   return (
     <div className="PostForm">
-      <Header/>
-      <NavBar/>
       <h1>Post a Test</h1>
       <form>
         <div id="leftColumn">

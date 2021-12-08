@@ -1,5 +1,3 @@
-import NavBar from '../NavBar/NavBar';
-import Header from '../Header/Header';
 import FileCard from '../FileCard/FileCard';
 import './HomePage.css';
 import * as data from './test.json';
@@ -13,8 +11,6 @@ function HomePage() {
   // console.log(fileInfo);
   return (
     <div className="HomePage">
-      <Header/>
-      <NavBar/>
       <div id="contentWrapper">
         <div id="filter"></div>
         <div id="files">
@@ -28,7 +24,7 @@ function HomePage() {
                     semester="Spring 2022"
                     class="Calc 2"/> */}
           {fileInfo.map((fileInfo) => {
-            return <FileCard key={fileInfo.title} class={fileInfo.class} title={fileInfo.title} semester={fileInfo.semester}/>
+            return <FileCard key={fileInfo.id} class={fileInfo.class} title={fileInfo.title} semester={fileInfo.semester}/>
           })}
         </div>
       </div>

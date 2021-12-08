@@ -1,11 +1,8 @@
-import NavBar from '../NavBar/NavBar';
-import Header from '../Header/Header';
+import React from 'react';
 
 function SavedPage() {
   return (
     <div className="SavedPage">
-      <Header/>
-      <NavBar/>
       <h1>Saved Material</h1>
     </div>
   );
