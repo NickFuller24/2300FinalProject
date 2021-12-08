@@ -1,4 +1,5 @@
 import FileCard from '../FileCard/FileCard';
+import Filter from '../Filter/Filter';
 import './HomePage.css';
 import * as data from './test.json';
 
@@ -12,7 +13,7 @@ function HomePage() {
   return (
     <div className="HomePage">
       <div id="contentWrapper">
-        <div id="filter"></div>
+        <Filter/>
         <div id="files">
           {/* <FileCard title="This is a super long file name to test what the width is like"
                     semester="Spring 2022"

@@ -38,7 +38,7 @@ function PostForm() {
       type: document.querySelector('input[name="type"]:checked').value,
       grade: document.getElementById('grade').value,
       title: document.getElementById('title').value,
-      // PDF: document.getElementById('fileUpload').value,
+      PDF: document.getElementById('fileUpload').value,
     }
   
     // submissions.push(file);
@@ -81,8 +81,8 @@ function PostForm() {
           <input type="text" id="grade" placeholder="100/100" />
           <label htmlFor="grade">Title</label>
           <input type="text" id="title" placeholder="Databases Test 1" />
-          {/* <label htmlFor="fileUpload">Upload a File</label>
-          <input type="file" id="fileUpload"required/> */}
+          <label htmlFor="fileUpload">Upload a File</label>
+          <input type="file" id="fileUpload"required/>
         </div>
         <button id="submitButton" onClick={addFile}>SUBMIT</button>
       </form>
