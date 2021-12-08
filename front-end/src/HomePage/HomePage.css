@@ -1,0 +1,21 @@
+#contentWrapper {
+  display: grid;
+  grid-template-columns: 5rem 300px 2rem auto;
+  grid-template-rows: 1rem 100vh;
+  margin-top: 5rem;
+}
+
+#filter {
+  background-color: red;
+  width: 300px;
+  height: 900px;
+  grid-column-start: 2;
+}
+
+#files {
+  grid-column-start: 4;
+  width: calc(100% - 4rem);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
