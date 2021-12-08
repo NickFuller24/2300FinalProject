@@ -1,7 +1,8 @@
 import React from 'react';
 import './PostForm.css';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import * as data from '../HomePage/test.json';
 
 const HomeLink = styled(Link)`
   text-decoration: none;
@@ -23,42 +24,67 @@ const NavLink = styled.li`
 `;
 
 function PostForm() {
+  // let submissions = [];
+  const addFile = (ev) => {
+    ev.preventDefault(); // stop form from submitting like normal
+    let file = {
+      mid: Date.now(),
+      school: document.getElementById('school').value,
+      professor: document.getElementById('professor').value,
+      class: document.getElementById('classCode').value,
+      department: document.getElementById('department').value,
+      semester: document.getElementById('semester').value,
+      year: document.getElementById('year').value,
+      type: document.querySelector('input[name="type"]:checked').value,
+      grade: document.getElementById('grade').value,
+      title: document.getElementById('title').value,
+      // PDF: document.getElementById('fileUpload').value,
+    }
+  
+    // submissions.push(file);
+    data.files.push(file);
+    console.log(data.files);
+    document.forms[0].reset();
+  }
+  
   return (
     <div className="PostForm">
       <NavWrapper>
         <NavLink><HomeLink to="/">Return to Home</HomeLink></NavLink>
       </NavWrapper>
-      <form>
+      <form id="form">
         <div id="leftColumn">
-          <label for="school">School</label>
-          <input type="text" id="school" required/>
-          <label for="professor">Professor</label>
-          <input type="text" id="professor" required/>
-          <label for="classCode">Class Code</label>
-          <input type="text" id="classCode" required/>
-          <label for="dept">Department</label>
-          <input type="text" id="dept" required/>
-          <label for="semester">Semester</label>
-          <input type="text" id="semester" required/>
-          <label for="year">Year</label>
-          <input type="text" id="year" required/>
+          <label htmlFor="school">School</label>
+          <input type="text" id="school" placeholder="Missouri S&T" />
+          <label htmlFor="professor">Professor</label>
+          <input type="text" id="professor" placeholder="San Yeung" />
+          <label htmlFor="classCode">Class Code</label>
+          <input type="text" id="classCode" placeholder="CS 2300" />
+          <label htmlFor="department">Department</label>
+          <input type="text" id="department" placeholder="Computer Science" />
+          <label htmlFor="semester">Semester</label>
+          <input type="text" id="semester" placeholder="Fall" />
+          <label htmlFor="year">Year</label>
+          <input type="text" id="year" placeholder="2021" />
         </div>
         <div id="rightColumn">
-          <p>Pick what <b>best</b> describes this file:</p>
+          <p>Pick what best describes this file:</p>
           <div id="typeForm">
             <input type="radio" id="test" name="type" value="Test"/>
-            <label for="test" class="radio">Test</label><br/>
+            <label htmlFor="test" className="radio">Test</label><br/>
             <input type="radio" id="study" name="type" value="Study Guide"/>
-            <label for="study" class="radio">Study Guide</label><br/>
+            <label htmlFor="study" className="radio">Study Guide</label><br/>
             <input type="radio" id="homework" name="type" value="Homework"/>
-            <label for="homework" class="radio">Homework</label>
+            <label htmlFor="homework" className="radio">Homework</label>
           </div>
-          <label for="grade">Grade</label>
-          <input type="text" id="grade" required/>
-          <label for="fileUpload">Upload a File</label>
-          <input type="file" id="fileUpload"required/>
+          <label htmlFor="grade">Grade</label>
+          <input type="text" id="grade" placeholder="100/100" />
+          <label htmlFor="grade">Title</label>
+          <input type="text" id="title" placeholder="Databases Test 1" />
+          {/* <label htmlFor="fileUpload">Upload a File</label>
+          <input type="file" id="fileUpload"required/> */}
         </div>
-        <input type="submit"/>
+        <button id="submitButton" onClick={addFile}>SUBMIT</button>
       </form>
     </div>
   );

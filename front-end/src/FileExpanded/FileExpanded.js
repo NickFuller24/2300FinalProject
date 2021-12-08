@@ -9,7 +9,7 @@ const CardWrapper = styled.div`
   height: 100vh;
   margin: 4rem 5rem 0 5rem;
   display: grid;
-  grid-template-columns: 800px 1rem auto;
+  grid-template-columns: 800px 4rem auto;
 `;
 
 const Title = styled.h3`
@@ -63,7 +63,7 @@ const FileExpanded = (props) => {
   let params = useParams();
 
   for(const file in data.files) {
-    if(data.files[file].mid === params.id) {
+    if(data.files[file].mid === parseInt(params.id)) {
       return (
         <div className="FileExpanded">
           <NavWrapper>
@@ -83,6 +83,10 @@ const FileExpanded = (props) => {
               <Category>
                 <Title>Semester:</Title>
                 <Description>{data.files[file].semester}</Description>
+              </Category>
+              <Category>
+                <Title>Year:</Title>
+                <Description>{data.files[file].year}</Description>
               </Category>
               <Category>
                 <Title>Professor:</Title>

@@ -1,28 +1,31 @@
 {
   "files": [
     {
-      "mid": "123",
+      "mid": 123,
       "class": "Calculus II",
       "title": "Calc 1 Test 2",
-      "semester": "Spring 2021",
+      "semester": "Spring",
+      "year": "2021",
       "professor": "Dr. Kinder",
       "school": "S&T",
       "grade": "98/100"
     },
     {
-      "mid": "124",
+      "mid": 124,
       "class": "Calculus III",
       "title": "Calc 3 Test 3",
-      "semester": "Spring 2020",
+      "semester": "Spring",
+      "year": "2020",
       "professor": "Dr. Brigham",
       "school": "S&T",
       "grade": "97/100"
     },
     {
-      "mid": "125",
+      "mid": 125,
       "class": "Databases",
       "title": "Databases Test 3",
-      "semester": "Fall 2019",
+      "semester": "Fall",
+      "year": "2019",
       "professor": "Dr. Yeung",
       "school": "S&T",
       "grade": "100/100"

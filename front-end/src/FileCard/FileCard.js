@@ -52,6 +52,10 @@ const FileCard = (props) => {
           <Title>Semester:</Title>
           <Description>{props.semester}</Description>
         </Category>
+        <Category>
+          <Title>Year:</Title>
+          <Description>{props.year}</Description>
+        </Category>
       </CardWrapper>
     </StyledLink>
   );
