@@ -1,10 +1,33 @@
 import React from 'react';
 import './PostForm.css';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components'
+
+const HomeLink = styled(Link)`
+  text-decoration: none;
+  color: #F77800;
+  font-weight: 1000;
+  margin-left: 3rem;
+  font-size: 2rem;
+`;
+
+const NavWrapper = styled.ul`
+  list-style-type: none;
+`;
+
+const NavLink = styled.li`
+  font-size: 2rem;
+  font-weight: 500;
+  color: #F77800;
+  font-family: 'Montserrat', sans-serif;
+`;
 
 function PostForm() {
   return (
     <div className="PostForm">
-      <h1>Post a Test</h1>
+      <NavWrapper>
+        <NavLink><HomeLink to="/">Return to Home</HomeLink></NavLink>
+      </NavWrapper>
       <form>
         <div id="leftColumn">
           <label for="school">School</label>

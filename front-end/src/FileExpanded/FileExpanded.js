@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import * as data from '../HomePage/test.json';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const CardWrapper = styled.div`
   width: 100vw;
   height: 100vh;
-  margin: 6rem 5rem 0 5rem;
+  margin: 4rem 5rem 0 5rem;
   display: grid;
   grid-template-columns: 800px 1rem auto;
 `;
@@ -38,6 +39,25 @@ const Category = styled.div`
   margin-bottom: 1.5rem;
 `;
 
+const HomeLink = styled(Link)`
+  text-decoration: none;
+  color: #F77800;
+  font-weight: 1000;
+  margin-left: 3rem;
+  font-size: 2rem;
+`;
+
+const NavWrapper = styled.ul`
+  list-style-type: none;
+`;
+
+const NavLink = styled.li`
+  font-size: 2rem;
+  font-weight: 500;
+  color: #F77800;
+  font-family: 'Montserrat', sans-serif;
+`;
+
 const FileExpanded = (props) => {
   // get url parameters
   let params = useParams();
@@ -46,6 +66,9 @@ const FileExpanded = (props) => {
     if(data.files[file].mid === params.id) {
       return (
         <div className="FileExpanded">
+          <NavWrapper>
+            <NavLink><HomeLink to="/">Return to Home</HomeLink></NavLink>
+          </NavWrapper>
           <CardWrapper>
             <PDFWrapper/>
             <TextWrapper>
