@@ -1,8 +1,10 @@
-import React from 'react';
+// import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './PostForm.css';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import * as data from '../HomePage/test.json';
+import Axios from 'axios'
 
 const HomeLink = styled(Link)`
   text-decoration: none;
@@ -24,6 +26,12 @@ const NavLink = styled.li`
 `;
 
 function PostForm() {
+  
+  // const [title, setTitle] = useState("");
+  // const [grade, setGrade] = useState("");
+  // const [semester, setSemester] = useState("");
+  // const [file, setFile] = useState("");
+
   // let submissions = [];
   const addFile = (ev) => {
     ev.preventDefault(); // stop form from submitting like normal
@@ -40,11 +48,18 @@ function PostForm() {
       title: document.getElementById('title').value,
       PDF: document.getElementById('fileUpload').value,
     }
-  
+    
     // submissions.push(file);
     data.files.push(file);
-    console.log(data.files);
+    //console.log(data.files);
     document.forms[0].reset();
+
+    //Attempting to send data to backend
+    Axios.post('http://localhost:3001/api/insert', {mId: file.mid}
+    ).then(()=> {
+    alert("successful insert");
+    });
+
   }
   
   return (
