@@ -1,0 +1,23 @@
+label {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #F77800;
+}
+
+select {
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+button {
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #FCBF49;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 25px;
+  width: 100%;
+}
