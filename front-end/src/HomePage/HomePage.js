@@ -24,7 +24,7 @@ function HomePage() {
                     semester="Spring 2022"
                     class="Calc 2"/> */}
           {fileInfo.map((fileInfo) => {
-            return <FileCard key={fileInfo.id} class={fileInfo.class} title={fileInfo.title} semester={fileInfo.semester}/>
+            return <FileCard key={fileInfo.mid} mid={fileInfo.mid} class={fileInfo.class} title={fileInfo.title} semester={fileInfo.semester}/>
           })}
         </div>
       </div>
