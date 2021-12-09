@@ -13,8 +13,6 @@ const CreateAccount = () =>{
             <h2>Login</h2>
           </div>
           <div id="userAndPass">
-            <label className="createLabel" for="username">Username:</label>
-            <input key="username" id="username" type="text" required />
             <label className="createLabel" for="email">Email:</label>
             <input key="email" id="email" type="email" required />
             <label className="createLabel" for="password">Password:</label>
