@@ -11,16 +11,15 @@ const db = mysql.createPool({
   database: "examdb"
 });
 
-// Broken code that is supposed to grab post from front end and update db
+// Grabs db insertion info from front end
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post("/api/insert", (req, res)=> {
+app.post("/api/insertFile", (req, res)=> {
   const school = req.body.school;
   const professor = req.body.professor;
   const dept = req.body.department;
-  //const mId = req.body.mId;
   const cKey = req.body.classCode;
   const type = req.body.type;
   const title = req.body.title;
@@ -28,38 +27,31 @@ app.post("/api/insert", (req, res)=> {
   const semester = req.body.semester;
   const year = req.body.year;
   const PDF = req.body.PDF;
+  const classTitle = cKey;
 
-  //Setting the date as the mId doesn't work, so remove later when solution is found
-  const mId = "0";
-  
-
-  // For some reason, only the insertClass or the insertMaterial can be executed
-  // (not together). I have no idea why this is, but that is why insertClass is commented out.
-
-  // Both work when ran seperately, but together they throw an error saying you can't set
-  // headers after they are sent to client
-
-  //------------In the future, create a query to run beforehand to check if class exists!!!------------
-
-  // //Calls MySql to insert respective CLASS
-  // const sqlInsertClass = 
-  // "INSERT INTO class (cKey, title, professor, dept, school) VALUES (?,?,?,?,?)";
-  // db.query(sqlInsertClass, [cKey, title, professor, dept, school], (err, result)=> {
-  //   if (err){
-  //     console.log(err);
-  //   } else {
-  //     res.send("Values Inserted");
-  //   }
+  // //------------Example of using SELECT to get data from DB------------
+  // const sqlClassCheck = 
+  // "SELECT cKey, professor, school from class";
+  // db.query(sqlClassCheck, (err, result) => {
+  // const resultArray = Object.values(JSON.parse(JSON.stringify(result)));
+  // if(resultArray.length != 0){console.log(resultArray[0].cKey);}
   // });
 
-  //Calls to MySQL to insert respective MATERIAL (must have existing CLASS before ran)
-  const sqlInsertMaterial = 
-  "INSERT INTO material (mId, cKey, type, title, grade, semester, year, PDF) VALUES (?,?,?,?,?,?,?,?)";
-  db.query(sqlInsertMaterial, [mId, cKey, type, title, grade, semester, year, PDF], (err, result)=> {
+  //Calls MySql to insert respective CLASS if not already existing
+  const sqlInsertClass = 
+  "INSERT INTO class (cKey, title, professor, dept, school) VALUES (?,?,?,?,?)";
+  db.query(sqlInsertClass, [cKey, classTitle, professor, dept, school], (err, result) => {
     if (err){
       console.log(err);
-    } else {
-      res.send("Values Inserted");
+    }
+  });
+
+  //Calls to MySQL to insert respective MATERIAL (must have existing CLASS to execute successfully)
+  const sqlInsertMaterial = 
+  "INSERT INTO material (cKey, type, title, grade, semester, year, PDF) VALUES (?,?,?,?,?,?,?)";
+  db.query(sqlInsertMaterial, [cKey, type, title, grade, semester, year, PDF], (err, result) => {
+    if (err){
+      console.log(err);
     }
   });
  });

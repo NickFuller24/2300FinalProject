@@ -62,10 +62,8 @@ function PostForm() {
     document.forms[0].reset();
 
 
-    //Attempting to send data to backend
-    //Call is being made (shown through Chrome Dev Tools)
-    Axios.post('http://localhost:3001/api/insert', {
-      mId: file.mid,
+    //Sending data to back-end
+    Axios.post('http://localhost:3001/api/insertFile', {
       school: school,
       professor: professor,
       classCode: classCode,
@@ -100,7 +98,7 @@ function PostForm() {
           <input type="text" id="professor" placeholder="San Yeung" 
           onChange={(e)=> {setProfessor(e.target.value)}}/>
           <label className="postLabel" htmlFor="classCode">Class Code</label>
-          <input type="text" id="classCode" placeholder="2300" 
+          <input type="text" id="classCode" placeholder="CS2300" 
           onChange={(e)=> {setClassCode(e.target.value)}}/>
           <label className="postLabel" htmlFor="department">Department</label>
           <input type="text" id="department" placeholder="CS" 
@@ -129,7 +127,7 @@ function PostForm() {
           <input type="text" id="grade" placeholder="100/100" 
           onChange={(e)=> {setGrade(e.target.value)}}/>
           <label className="postLabel" htmlFor="grade">Title</label>
-          <input type="text" id="title" placeholder="Databases Test 1" 
+          <input type="text" id="title" placeholder="Exam 1" 
           onChange={(e)=> {setTitle(e.target.value)}}/>
           <label className="postLabel" htmlFor="fileUpload">Upload a File</label>
           <input type="file" id="fileUpload"required
