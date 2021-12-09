@@ -1,0 +1,14 @@
+#contentWrapper {
+  display: grid;
+  grid-template-columns: 5rem 300px 2rem auto;
+  grid-template-rows: 1rem 100vh;
+  margin-top: 5rem;
+}
+
+#files {
+  grid-column-start: 4;
+  width: calc(100% - 4rem);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

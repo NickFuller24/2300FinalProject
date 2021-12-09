@@ -1,0 +1,9 @@
+{
+  "users": [
+    {
+      "username": "nickfuller",
+      "password": "password1",
+      "loggedIn": false
+    }
+  ]
+}
