@@ -3,11 +3,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const mysql = require("mysql");
+import * as data from '../front-end/src/HomePage/test.json';
 
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "6864",
+  password: "KChuskers13?",
   database: "examdb"
 });
 
@@ -55,6 +56,18 @@ app.post("/api/insertFile", (req, res)=> {
     }
   });
  });
+
+app.get("/api/getAllFiles", (req, res)=> {
+  const sqlSelectFiles = "SELECT * FROM MATERIAL";
+  db.query(sqlSelectFiles, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      data.files = result;
+    }
+  });
+});
 
 app.listen(3001, () => {
   console.log("running on port 3001");
