@@ -26,13 +26,14 @@ app.post("/api/insert", (req, res)=> {
   //const PDF = req.body.PDF;
 
   //Remove later
-  const mId = "0";
+  const mId = 0;
+  const cKey = 0;
   const PDF = "TEST";
   
   //Following lines successfully put into database if axios were to work
   const sqlInsert = 
-  "INSERT INTO material (mId, kind, title, grade, semester, year, PDF) VALUES (?,?,?,?,?,?,?)";
-  db.query(sqlInsert, [mId, type, title, grade, semester, year, PDF], (err, result)=> {
+  "INSERT INTO material (mId, cKey, type, title, grade, semester, year, PDF) VALUES (?,?,?,?,?,?,?,?)";
+  db.query(sqlInsert, [mId, cKey, type, title, grade, semester, year, PDF], (err, result)=> {
     console.log(err);
   });
  });
@@ -41,6 +42,7 @@ app.post("/api/insert", (req, res)=> {
 // // Simple code that successfully inserts into database
 // app.get("/", (req, res)=> {
 //   const mId = 0;
+//   const cKey = 0;
 //   const type = "Test";
 //   const title = "Biggest Exam of Your Life";
 //   const grade = "98";
@@ -49,8 +51,8 @@ app.post("/api/insert", (req, res)=> {
 //   const PDF = "TEST";
 
 //   const sqlInsert = 
-//   "INSERT INTO material (mId, kind, title, grade, semester, year, PDF) VALUES (?,?,?,?,?,?,?)";
-//   db.query(sqlInsert, [mId, type, title, grade, semester, year, PDF], (err, result)=> {
+//   "INSERT INTO material (mId, cKey, type, title, grade, semester, year, PDF) VALUES (?,?,?,?,?,?,?,?)";
+//   db.query(sqlInsert, [mId, cKey, type, title, grade, semester, year, PDF], (err, result)=> {
 //     console.log(err);
 //   });
 // });
