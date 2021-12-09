@@ -1,0 +1,103 @@
+.Login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 0.75rem;
+  font-weight: 1000;
+  color: #003049;
+}
+
+.createLabel {
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 0.75rem;
+  display: block;
+  font-weight: 700;
+  color: #003049;
+}
+
+input[type=text] {
+  font-size: 1.5rem;
+  width: 450px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+input[type=password] {
+  font-size: 1.5rem;
+  width: 450px;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 1.5rem;
+}
+
+input[type=email] {
+  font-size: 1.5rem;
+  width: 450px;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 1.5rem;
+}
+
+button {
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 2rem;
+  background-color: #FCBF49;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 25px;
+  width: 200px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#LoginWrapper {
+  width: 600px;
+  height: 800px;
+  border-radius: 25px;
+  border: 2px solid #003049;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#createAccountForm {
+  display: block;
+  margin: 0;
+}
+
+#loginButton {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+#headerWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#accountWrapper {
+  margin-top: 3rem;
+}
+
+/* p {
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  display: block;
+  margin-bottom: 0;
+} */
+

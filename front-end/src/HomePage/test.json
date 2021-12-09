@@ -2,33 +2,39 @@
   "files": [
     {
       "mid": 123,
-      "class": "Calculus II",
-      "title": "Calc 1 Test 2",
+      "class": "Math 1215",
+      "title": "Calc 1 Homework 3",
       "semester": "Spring",
       "year": "2021",
       "professor": "Dr. Kinder",
       "school": "S&T",
-      "grade": "98/100"
+      "grade": "98/100",
+      "department": "Math",
+      "type": "Homework"
     },
     {
       "mid": 124,
-      "class": "Calculus III",
+      "class": "Math 2222",
       "title": "Calc 3 Test 3",
       "semester": "Spring",
       "year": "2020",
       "professor": "Dr. Brigham",
       "school": "S&T",
-      "grade": "97/100"
+      "grade": "97/100",
+      "department": "Math",
+      "type": "Test"
     },
     {
       "mid": 125,
-      "class": "Databases",
+      "class": "CS 2300",
       "title": "Databases Test 3",
       "semester": "Fall",
       "year": "2019",
       "professor": "Dr. Yeung",
       "school": "S&T",
-      "grade": "100/100"
+      "grade": "100/100",
+      "department": "Computer Science",
+      "type": "Test"
     }
   ]
 }

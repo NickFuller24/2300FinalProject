@@ -1,14 +1,19 @@
-label {
+.postLabel {
   font-size: 2rem;
   font-family: 'Montserrat', sans-serif;
   padding-bottom: 0.5rem;
   display: block;
   font-weight: 700;
+  color: #003049;
 }
 
 .radio {
   display: inline;
   padding-left: 0.25rem;
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #003049;
 }
 
 input[type=text] {
@@ -52,7 +57,7 @@ p {
   margin-bottom: 0;
 }
 
-form {
+#postForm {
   display: grid;
   grid-template-columns: 10% 35% 10% 35% 10%;
   grid-template-rows: auto 5rem;

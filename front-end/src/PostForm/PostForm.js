@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import './PostForm.css';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import NavBar from '../NavBar/NavBar';
 import * as data from '../HomePage/test.json';
 import Axios from 'axios';
 
@@ -52,7 +53,7 @@ function PostForm() {
       type: document.querySelector('input[name="type"]:checked').value,
       grade: document.getElementById('grade').value,
       title: document.getElementById('title').value,
-      PDF: document.getElementById('fileUpload').value,
+      // PDF: document.getElementById('fileUpload').value,
     }
     
     // submissions.push(file);
@@ -86,27 +87,28 @@ function PostForm() {
   
   return (
     <div className="PostForm">
+      <NavBar/>
       <NavWrapper>
         <NavLink><HomeLink to="/">Return to Home</HomeLink></NavLink>
       </NavWrapper>
-      <form id="form">
+      <form id="postForm">
         <div id="leftColumn">
-          <label htmlFor="school">School</label>
-          <input type="text" id="school" placeholder="Missouri S&T" 
+          <label className="postLabel" htmlFor="school">School</label>
+          <input type="text" id="school" placeholder="MST" 
           onChange={(e)=> {setSchool(e.target.value)}}/>
-          <label htmlFor="professor">Professor</label>
+          <label className="postLabel" htmlFor="professor">Professor</label>
           <input type="text" id="professor" placeholder="San Yeung" 
           onChange={(e)=> {setProfessor(e.target.value)}}/>
-          <label htmlFor="classCode">Class Code</label>
+          <label className="postLabel" htmlFor="classCode">Class Code</label>
           <input type="text" id="classCode" placeholder="2300" 
           onChange={(e)=> {setClassCode(e.target.value)}}/>
-          <label htmlFor="department">Department</label>
+          <label className="postLabel" htmlFor="department">Department</label>
           <input type="text" id="department" placeholder="CS" 
           onChange={(e)=> {setDepartment(e.target.value)}}/>
-          <label htmlFor="semester">Semester</label>
+          <label className="postLabel" htmlFor="semester">Semester</label>
           <input type="text" id="semester" placeholder="Fall" 
           onChange={(e)=> {setSemester(e.target.value)}}/>
-          <label htmlFor="year">Year</label>
+          <label className="postLabel" htmlFor="year">Year</label>
           <input type="text" id="year" placeholder="2021" 
           onChange={(e)=> {setYear(e.target.value)}}/>
         </div>
@@ -123,13 +125,13 @@ function PostForm() {
             onChange={(e)=> {setType(e.target.value)}}/>
             <label htmlFor="homework" className="radio">Homework</label>
           </div>
-          <label htmlFor="grade">Grade</label>
+          <label className="postLabel" htmlFor="grade">Grade</label>
           <input type="text" id="grade" placeholder="100/100" 
           onChange={(e)=> {setGrade(e.target.value)}}/>
-          <label htmlFor="grade">Title</label>
+          <label className="postLabel" htmlFor="grade">Title</label>
           <input type="text" id="title" placeholder="Databases Test 1" 
           onChange={(e)=> {setTitle(e.target.value)}}/>
-          <label htmlFor="fileUpload">Upload a File</label>
+          <label className="postLabel" htmlFor="fileUpload">Upload a File</label>
           <input type="file" id="fileUpload"required
           onChange={(e)=> {setPDF(e.target.value)}}/>
         </div>
