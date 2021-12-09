@@ -98,7 +98,7 @@ function PostForm() {
           <input type="text" id="professor" placeholder="San Yeung" 
           onChange={(e)=> {setProfessor(e.target.value)}}/>
           <label className="postLabel" htmlFor="classCode">Class Code</label>
-          <input type="text" id="classCode" placeholder="CS2300" 
+          <input type="text" id="classCode" placeholder="2300" 
           onChange={(e)=> {setClassCode(e.target.value)}}/>
           <label className="postLabel" htmlFor="department">Department</label>
           <input type="text" id="department" placeholder="CS" 
@@ -124,7 +124,7 @@ function PostForm() {
             <label htmlFor="homework" className="radio">Homework</label>
           </div>
           <label className="postLabel" htmlFor="grade">Grade</label>
-          <input type="text" id="grade" placeholder="100/100" 
+          <input type="text" id="grade" placeholder="100" 
           onChange={(e)=> {setGrade(e.target.value)}}/>
           <label className="postLabel" htmlFor="grade">Title</label>
           <input type="text" id="title" placeholder="Exam 1" 
