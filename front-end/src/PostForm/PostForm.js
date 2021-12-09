@@ -64,20 +64,18 @@ function PostForm() {
     //Attempting to send data to backend
     //Call is being made (shown through Chrome Dev Tools)
     Axios.post('http://localhost:3001/api/insert', {
-      //mId: mid,
-      // school: school,
-      // professor: professor,
-      // classCode: classCode,
-      // department: department,
-      
-      //Only sends a few values for testing
+      mId: file.mid,
+      school: school,
+      professor: professor,
+      classCode: classCode,
+      department: department,
       semester: semester,
       year: year,
       type: type,
       grade: grade,
       title: title,
-      //PDF: PDF
-    }).then(()=> { alert("successful insert"); })
+      PDF: PDF
+    }).then(()=> { console.log("Success"); })
     .catch((error) => {
       if( error.response ){
           console.log(error.response.data); // => the response payload 
@@ -100,10 +98,10 @@ function PostForm() {
           <input type="text" id="professor" placeholder="San Yeung" 
           onChange={(e)=> {setProfessor(e.target.value)}}/>
           <label htmlFor="classCode">Class Code</label>
-          <input type="text" id="classCode" placeholder="CS 2300" 
+          <input type="text" id="classCode" placeholder="2300" 
           onChange={(e)=> {setClassCode(e.target.value)}}/>
           <label htmlFor="department">Department</label>
-          <input type="text" id="department" placeholder="Computer Science" 
+          <input type="text" id="department" placeholder="CS" 
           onChange={(e)=> {setDepartment(e.target.value)}}/>
           <label htmlFor="semester">Semester</label>
           <input type="text" id="semester" placeholder="Fall" 
