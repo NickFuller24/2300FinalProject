@@ -24,8 +24,8 @@ const Login = () =>{
             <h2>Login</h2>
           </div>
           <div id="userAndPass">
-            <label className="loginLabel" for="username">Username:</label>
-            <input key="username" id="username" type="text" required />
+            <label className="loginLabel" for="email">Email:</label>
+            <input key="email" id="email" type="email" required />
             <label className="loginLabel" for="password">Password:</label>
             <input key="password" id="password" type="password" required />
           </div>
