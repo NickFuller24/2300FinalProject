@@ -1,5 +1,4 @@
-// import React from 'react';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './PostForm.css';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -79,7 +78,7 @@ function PostForm() {
       if( error.response ){
           console.log(error.response.data); // => the response payload 
       }
-  });
+    });
 
   }
   

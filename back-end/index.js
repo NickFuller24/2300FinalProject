@@ -56,6 +56,23 @@ app.post("/api/insertFile", (req, res)=> {
   });
  });
 
+ app.post("/api/insertStudent", (req, res)=> {
+  const name = req.body.name;
+  const major = req.body.major;
+  const email = req.body.email;
+  const password = req.body.password;
+  const sid = req.body.sid;
+
+  //Calls MySql to insert respective STUDENT
+  const sqlInsertClass = 
+  "INSERT INTO student (sId, fullName, major, email, pswd) VALUES (?,?,?,?,?)";
+  db.query(sqlInsertClass, [sid, name, major, email, password], (err, result) => {
+    if (err){
+      console.log(err);
+    }
+  });
+ });
+
 app.listen(3001, () => {
   console.log("running on port 3001");
 });
