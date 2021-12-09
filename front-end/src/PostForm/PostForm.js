@@ -2,6 +2,7 @@ import React from 'react';
 import './PostForm.css';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import NavBar from '../NavBar/NavBar';
 import * as data from '../HomePage/test.json';
 
 const HomeLink = styled(Link)`
@@ -49,22 +50,23 @@ function PostForm() {
   
   return (
     <div className="PostForm">
+      <NavBar/>
       <NavWrapper>
         <NavLink><HomeLink to="/">Return to Home</HomeLink></NavLink>
       </NavWrapper>
-      <form id="form">
+      <form id="postForm">
         <div id="leftColumn">
-          <label htmlFor="school">School</label>
+          <label className="postLabel" htmlFor="school">School</label>
           <input type="text" id="school" placeholder="Missouri S&T" />
-          <label htmlFor="professor">Professor</label>
+          <label className="postLabel" htmlFor="professor">Professor</label>
           <input type="text" id="professor" placeholder="San Yeung" />
-          <label htmlFor="classCode">Class Code</label>
+          <label className="postLabel" htmlFor="classCode">Class Code</label>
           <input type="text" id="classCode" placeholder="CS 2300" />
-          <label htmlFor="department">Department</label>
+          <label className="postLabel" htmlFor="department">Department</label>
           <input type="text" id="department" placeholder="Computer Science" />
-          <label htmlFor="semester">Semester</label>
+          <label className="postLabel" htmlFor="semester">Semester</label>
           <input type="text" id="semester" placeholder="Fall" />
-          <label htmlFor="year">Year</label>
+          <label className="postLabel" htmlFor="year">Year</label>
           <input type="text" id="year" placeholder="2021" />
         </div>
         <div id="rightColumn">
@@ -77,9 +79,9 @@ function PostForm() {
             <input type="radio" id="homework" name="type" value="Homework"/>
             <label htmlFor="homework" className="radio">Homework</label>
           </div>
-          <label htmlFor="grade">Grade</label>
+          <label className="postLabel" htmlFor="grade">Grade</label>
           <input type="text" id="grade" placeholder="100/100" />
-          <label htmlFor="grade">Title</label>
+          <label className="postLabel" htmlFor="grade">Title</label>
           <input type="text" id="title" placeholder="Databases Test 1" />
           {/* <label htmlFor="fileUpload">Upload a File</label>
           <input type="file" id="fileUpload"required/> */}

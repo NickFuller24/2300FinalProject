@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const NavWrapper = styled.ul`
   position: absolute;
   right: 5rem;
+  top: 10rem;
   width: 600px;
   display: flex;
   justify-content: space-between;
@@ -31,19 +32,19 @@ const LogLink = styled(Link)`
 `;
 
 /* may need some sort of user id for saved and home */
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <NavWrapper>
       <NavLink><StyledLink to="/post">Post</StyledLink></NavLink>
       <NavLink><StyledLink to="/saved">Saved Material</StyledLink></NavLink>
-      <NavLink><LogLink to="/" onClick={logout}>Logout</LogLink></NavLink>
+      <NavLink><LogLink to="/login" onClick={logout}>Login</LogLink></NavLink>
     </NavWrapper>
   );
 };
 
 /* add logout functionality */
 const logout = () => {
-  window.confirm("Are you sure you want to logout");
+  // window.confirm("Are you sure you want to logout");
 };
 
 export default NavBar;

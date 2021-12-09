@@ -33,7 +33,7 @@ const OptionsWrapper = styled.div`
 `;
 
 const removeFilters = () => {
-  document.getElementById("material").value = "";
+  document.getElementById("type").value = "";
   document.getElementById("class").value = "";
   document.getElementById("department").value = "";
   document.getElementById("semester").value = "";
@@ -41,7 +41,11 @@ const removeFilters = () => {
   document.getElementById("professor").value = "";
 }
 
-const Filter = () => {
+const applyFilters = () => {
+  console.log('hello');
+}
+
+const Filter = (props) => {
   var classes = [];
   var departments = [];
   var years = [];
@@ -67,49 +71,50 @@ const Filter = () => {
         <Header>Filter</Header>
       </HeaderWrapper>
       <OptionsWrapper>
-        <select id="material">
-          <option value="" disabled selected>Material Type</option>
-          <option value="Test">Test</option>
-          <option value="Homework">Homework</option>
-          <option value="Study Guide">Study Guide</option>
+        <select id="type" defaultValue="">
+          <option key="default" value="" disabled>Material Type</option>
+          <option key="test" value="Test">Test</option>
+          <option key="hw" value="Homework">Homework</option>
+          <option key="study" value="Study Guide">Study Guide</option>
         </select>
 
-        <select id="class">
-          <option value="" disabled selected>Class</option>
+        <select id="class" defaultValue="">
+          <option key="default" value="" disabled>Class</option>
           {classes.map((el) => {
-            return <option value={el}>{el}</option>
+            return <option key={el} value={el}>{el}</option>
           })}
         </select>
 
-        <select id="department">
-          <option value="" disabled selected>Department</option>
+        <select id="department" defaultValue="">
+          <option key="default" value="" disabled>Department</option>
           {departments.map((el) => {
-            return <option value={el}>{el}</option>
+            return <option key={el} value={el}>{el}</option>
           })}
         </select>
 
-        <select id="semester">
-          <option value="" disabled selected>Semester</option>
-          <option value="Spring">Spring</option>
-          <option value="Summer">Summer</option>
-          <option value="Fall">Fall</option>
+        <select id="semester" defaultValue="">
+          <option key="default" value="" disabled>Semester</option>
+          <option key="spring" value="Spring">Spring</option>
+          <option key="summer" value="Summer">Summer</option>
+          <option key="fall" value="Fall">Fall</option>
         </select>
 
-        <select id="year">
-          <option value="" disabled selected>Year</option>
+        <select id="year" defaultValue="">
+          <option key="default" value="" disabled>Year</option>
           {years.map((el) => {
-            return <option value={el}>{el}</option>
+            return <option key={el} value={el}>{el}</option>
           })}
         </select>
 
-        <select id="professor">
-          <option value="" disabled selected>Professor</option>
+        <select id="professor" defaultValue="">
+          <option key="default" value="" disabled>Professor</option>
           {professors.map((el) => {
-            return <option value={el}>{el}</option>
+            return <option key={el} value={el}>{el}</option>
           })}
         </select>
 
-        <button onClick={removeFilters}>Remove Filters</button>
+        <button id="applyFilters" onClick={applyFilters}>Apply Filters</button>
+        <button id="removeFilters" onClick={removeFilters}>Remove Filters</button>
       </OptionsWrapper>
     </FilterWrapper>
   );

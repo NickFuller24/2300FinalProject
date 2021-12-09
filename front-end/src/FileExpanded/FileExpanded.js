@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import * as data from '../HomePage/test.json';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import NavBar from '../NavBar/NavBar';
 
 const CardWrapper = styled.div`
   width: 100vw;
@@ -66,6 +67,7 @@ const FileExpanded = (props) => {
     if(data.files[file].mid === parseInt(params.id)) {
       return (
         <div className="FileExpanded">
+          <NavBar/>
           <NavWrapper>
             <NavLink><HomeLink to="/">Return to Home</HomeLink></NavLink>
           </NavWrapper>

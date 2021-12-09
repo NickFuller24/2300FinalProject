@@ -11,7 +11,18 @@ select {
   display: block;
 }
 
-button {
+#removeFilters {
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #FCBF49;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 25px;
+  width: 100%;
+}
+
+#applyFilters {
   font-size: 1.5rem;
   font-family: 'Montserrat', sans-serif;
   background-color: #FCBF49;

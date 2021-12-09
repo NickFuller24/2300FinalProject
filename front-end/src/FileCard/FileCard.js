@@ -41,12 +41,12 @@ const FileCard = (props) => {
       <CardWrapper>
         <PDFWrapper/>
         <Category>
-          <Title>Class:</Title>
-          <Description>{props.class}</Description>
-        </Category>
-        <Category>
           <Title>Title:</Title>
           <Description>{props.title}</Description>
+        </Category>
+        <Category>
+          <Title>Class:</Title>
+          <Description>{props.class}</Description>
         </Category>
         <Category>
           <Title>Semester:</Title>
