@@ -59,9 +59,9 @@ button:hover {
   cursor: pointer;
 }
 
-#LoginWrapper {
+#SignUpWrapper {
   width: 600px;
-  height: 800px;
+  height: 900px;
   border-radius: 25px;
   border: 2px solid #003049;
   display: flex;
