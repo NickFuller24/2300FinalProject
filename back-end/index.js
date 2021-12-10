@@ -28,6 +28,7 @@ app.post("/api/insertFile", (req, res)=> {
   const year = req.body.year;
   const PDF = req.body.PDF;
   const classTitle = cKey;
+  const cId = cKey + professor + school;
 
   // //------------Example of using SELECT to get data from DB------------
   // const sqlClassCheck = 
@@ -39,8 +40,8 @@ app.post("/api/insertFile", (req, res)=> {
 
   //Calls MySql to insert respective CLASS if not already existing
   const sqlInsertClass = 
-  "INSERT INTO class (cKey, cTitle, professor, dept, school) VALUES (?,?,?,?,?)";
-  db.query(sqlInsertClass, [cKey, classTitle, professor, dept, school], (err, result) => {
+  "INSERT INTO class (cId, cKey, cTitle, professor, dept, school) VALUES (?,?,?,?,?,?)";
+  db.query(sqlInsertClass, [cId, cKey, classTitle, professor, dept, school], (err, result) => {
     if (err){
       console.log(err);
     }
@@ -48,8 +49,8 @@ app.post("/api/insertFile", (req, res)=> {
 
   //Calls to MySQL to insert respective MATERIAL (must have existing CLASS to execute successfully)
   const sqlInsertMaterial = 
-  "INSERT INTO material (cKey, type, mTitle, grade, semester, year, PDF) VALUES (?,?,?,?,?,?,?)";
-  db.query(sqlInsertMaterial, [cKey, type, title, grade, semester, year, PDF], (err, result) => {
+  "INSERT INTO material (cId, type, mTitle, grade, semester, year, PDF) VALUES (?,?,?,?,?,?,?)";
+  db.query(sqlInsertMaterial, [cId, type, title, grade, semester, year, PDF], (err, result) => {
     if (err){
       console.log(err);
     }
@@ -74,10 +75,9 @@ app.post("/api/insertFile", (req, res)=> {
  });
 
  //Sending db data relating to material and class relations to front end
- //-----REDO WHEN YOU COME UP WITH BETTER SCHEMA-----THIS ASSUMES cKey IS unique-----
  app.get("/api/loadFiles", (req, res)=> {
   const sqlMaterialSelect = 
-  "SELECT * FROM MATERIAL INNER JOIN CLASS ON MATERIAL.cKey=CLASS.cKey;";
+  "SELECT * FROM MATERIAL INNER JOIN CLASS ON MATERIAL.cId=CLASS.cId;";
   db.query(sqlMaterialSelect, (err, results, fields) => {
     if(err) throw err;
     res.send(results);
