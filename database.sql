@@ -44,10 +44,11 @@ CREATE TABLE Saved (
     FOREIGN KEY (mId) REFERENCES MATERIAL(mId)    
 );
 
+#----------Start of insertions for testing----------#
 INSERT INTO STUDENT (sId, fullName, major, email, pswd) VALUES 
-("0", "Garrett Mason", "CS", "gmmncf@mst.edu", "password"),
-("1", "Nick Fuller", "CS", "something@mst.edu", "password"),
-("2", "Sam Weik", "CS", "somethingelse@mst.edu", "password");
+("1255", "Garrett Mason", "CS", "gmmncf@mst.edu", "password"),
+("3142", "Nick Fuller", "CS", "something@mst.edu", "password"),
+("8607", "Sam Weik", "CS", "somethingelse@mst.edu", "password");
 
 INSERT INTO CLASS (cId, cKey, cTitle, professor, dept, school) VALUES
 ("CS2300Sam YeungMST", "CS2300", "Databases", "Sam Yeung", "CS", "MST"),
@@ -61,10 +62,27 @@ INSERT INTO MATERIAL (cId, `type`, mTitle, grade, semester, `year`, PDF) VALUES
 ("CS3800Josh WilkersonMST", "Study Guide", "Final Resource", "96/100", "Fall", "2021", "PDF"),
 ("CS3800Some GuyMST", "Test", "Exam I", "96/100", "Fall", "2021", "PDF"),
 ("Econ1200Radu PuslengheaMST", "Homework", "Final Group Project", "100/100", "Fall", "2021", "PDF");
+#----------End of insertions for testing----------#
 
-SELECT * FROM MATERIAL;
-SELECT * FROM CLASS;
+-- #Queries for testing
+-- SELECT * FROM MATERIAL;
+-- SELECT * FROM CLASS;
 
-SELECT * 
-FROM MATERIAL
-INNER JOIN CLASS ON MATERIAL.cId=CLASS.cId;
+-- #Example of inserting material into Garrett's SAVED
+-- INSERT INTO SAVED (sId, mId) VALUES
+-- ("1255", 3),
+-- ("1255", 4);
+
+-- #Example of viewing from Garrett's SAVED knowing only sId
+-- SELECT *
+-- FROM MATERIAL
+-- WHERE mId IN (
+-- 	SELECT mId
+-- 	FROM SAVED
+-- 	WHERE sId = "1255"
+-- );
+
+-- #Query to get corresponding material and class info for insertion upon gui startup
+-- SELECT * 
+-- FROM MATERIAL
+-- INNER JOIN CLASS ON MATERIAL.cId=CLASS.cId;
