@@ -30,14 +30,6 @@ app.post("/api/insertFile", (req, res)=> {
   const classTitle = cKey;
   const cId = cKey + professor + school;
 
-  // //------------Example of using SELECT to get data from DB------------
-  // const sqlClassCheck = 
-  // "SELECT cKey, professor, school from class";
-  // db.query(sqlClassCheck, (err, result) => {
-  // const resultArray = Object.values(JSON.parse(JSON.stringify(result)));
-  // if(resultArray.length != 0){console.log(resultArray[0].cKey);}
-  // });
-
   //Calls MySql to insert respective CLASS if not already existing
   const sqlInsertClass = 
   "INSERT INTO class (cId, cKey, cTitle, professor, dept, school) VALUES (?,?,?,?,?,?)";

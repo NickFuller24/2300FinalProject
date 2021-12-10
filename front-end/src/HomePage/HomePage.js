@@ -65,7 +65,6 @@ function HomePage() {
   const [fileInfo, setFileInfo] = useState([]);
 
   // Sucessfully gets combined datatable of material and class from back-end
-  // Still needs to be added as gui file upon gui startup!
   var files = [];
   useEffect(() => {
     Axios.get('http://localhost:3001/api/loadFiles').then((response)=> {
