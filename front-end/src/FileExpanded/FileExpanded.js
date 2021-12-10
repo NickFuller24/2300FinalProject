@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
 import styled from 'styled-components';
-import * as data from '../HomePage/test.json';
+// import * as data from '../HomePage/test.json';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
+import Axios from 'axios';
 
 const CardWrapper = styled.div`
   width: 100vw;
@@ -61,10 +62,40 @@ const NavLink = styled.li`
 
 const FileExpanded = (props) => {
   // get url parameters
+  const [isLoading, setLoading] = useState(true);
+  const [fileInfo, setFileInfo] = useState([]);
+
   let params = useParams();
 
-  for(const file in data.files) {
-    if(data.files[file].mid === parseInt(params.id)) {
+  // Sucessfully gets combined datatable of material and class from back-end
+  // Still needs to be added as gui file upon gui startup!
+  var files = [];
+  useEffect(() => {
+    Axios.get('http://localhost:3001/api/loadFiles').then((response)=> {
+      const resultArray = Object.values(JSON.parse(JSON.stringify(response)));  
+      // console.log(resultArray[0]);
+      files = [];
+      for(const file in resultArray[0]) {
+        // console.log(resultArray[0][file]);
+        files.push(resultArray[0][file]);
+        console.log(files[file]);
+      }
+      setFileInfo(files);
+      setLoading(false);
+    });
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="FileExpanded">
+        <NavBar/>
+      </div>
+    )
+  }
+
+  for(const file in fileInfo) {
+    console.log(file);
+    if(fileInfo[file].mId === parseInt(params.id)) {
       return (
         <div className="FileExpanded">
           <NavBar/>
@@ -76,31 +107,31 @@ const FileExpanded = (props) => {
             <TextWrapper>
               <Category>
                 <Title>Class:</Title>
-                <Description>{data.files[file].class}</Description>
+                <Description>{fileInfo[file].cKey}</Description>
               </Category>
               <Category>
                 <Title>Title:</Title>
-                <Description>{data.files[file].title}</Description>
+                <Description>{fileInfo[file].mTitle}</Description>
               </Category>
               <Category>
                 <Title>Semester:</Title>
-                <Description>{data.files[file].semester}</Description>
+                <Description>{fileInfo[file].semester}</Description>
               </Category>
               <Category>
                 <Title>Year:</Title>
-                <Description>{data.files[file].year}</Description>
+                <Description>{fileInfo[file].year}</Description>
               </Category>
               <Category>
                 <Title>Professor:</Title>
-                <Description>{data.files[file].professor}</Description>
+                <Description>{fileInfo[file].professor}</Description>
               </Category>
               <Category>
                 <Title>School:</Title>
-                <Description>{data.files[file].school}</Description>
+                <Description>{fileInfo[file].school}</Description>
               </Category>
               <Category>
                 <Title>Grade:</Title>
-                <Description>{data.files[file].grade}</Description>
+                <Description>{fileInfo[file].grade}</Description>
               </Category>
             </TextWrapper>
           </CardWrapper>
@@ -108,6 +139,11 @@ const FileExpanded = (props) => {
       );
     }
   }
+  return (
+    <div className="FileExpanded">
+      <NavBar/>
+    </div>
+  )
 };
 
 export default FileExpanded;

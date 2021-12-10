@@ -3,7 +3,7 @@ import FileCard from '../FileCard/FileCard';
 import Filter from '../Filter/Filter';
 import NavBar from '../NavBar/NavBar';
 import './HomePage.css';
-import * as data from './test.json';
+// import * as data from './test.json';
 import Axios from 'axios';
 
 const onFilterChange = (ev) => {
@@ -24,22 +24,41 @@ function HomePage() {
   // const updateSemester = val => { setSemester(val); };
   // const updateYear = val => { setYear(val); };
   // const updateProfessor = val => { setProfessor(val); };
+  const [isLoading, setLoading] = useState(true);
+  const [fileInfo, setFileInfo] = useState([]);
 
   // Sucessfully gets combined datatable of material and class from back-end
   // Still needs to be added as gui file upon gui startup!
-  useEffect(()=> {
+  var files = [];
+  useEffect(() => {
     Axios.get('http://localhost:3001/api/loadFiles').then((response)=> {
       const resultArray = Object.values(JSON.parse(JSON.stringify(response)));  
-      console.log(resultArray[0][0].mTitle);
+      // console.log(resultArray[0]);
+      files = [];
+      for(const file in resultArray[0]) {
+        // console.log(resultArray[0][file]);
+        files.push(resultArray[0][file]);
+        console.log(files[file]);
+      }
+      setFileInfo(files);
+      setLoading(false);
     });
   }, []);
 
-
-
-  var fileInfo = [];
-  for(const file in data.files) {
-    fileInfo.push(data.files[file]);
+  if (isLoading) {
+    return (
+      <div className="HomePage">
+        <NavBar/>
+        <div id="contentWrapper">
+          <Filter onChange={onFilterChange}/>
+        </div>
+      </div>
+    )
   }
+
+  // for(const file in data.files) {
+  //   fileInfo.push(data.files[file]);
+  // }
 
   // useEffect(() => {
   //   console.log('useEffect');
@@ -83,20 +102,20 @@ function HomePage() {
   //   }
   // }, [materialFilter, classFilter, departmentFilter, semesterFilter, yearFilter, professorFilter]);
   
-  // console.log(fileInfo);
+  console.log(files);
   return (
     <div className="HomePage">
       <NavBar/>
       <div id="contentWrapper">
         <Filter onChange={onFilterChange}/>
         <div id="files">
-          {fileInfo.map((fileInfo) => {
-            return <FileCard key={fileInfo.mid}
-                            mid={fileInfo.mid}
-                            class={fileInfo.class}
-                            title={fileInfo.title}
-                            semester={fileInfo.semester}
-                            year={fileInfo.year}
+          {fileInfo.map((file) => {
+            return <FileCard key={file.mId}
+                            mid={file.mId}
+                            class={file.cKey}
+                            title={file.mTitle}
+                            semester={file.semester}
+                            year={file.year}
                             // updateMaterial={updateMaterial}
                             // updateClass={updateClass}
                             // updateDepartment={updateDepartment}
