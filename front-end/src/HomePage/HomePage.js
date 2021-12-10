@@ -11,12 +11,49 @@ const onFilterChange = (ev) => {
 };
 
 function HomePage() {
-  // const [materialFilter, setMaterial] = useState("");
-  // const [classFilter, setClass] = useState("");
-  // const [departmentFilter, setDepartment] = useState("");
-  // const [semesterFilter, setSemester] = useState("");
-  // const [yearFilter, setYear] = useState("");
-  // const [professorFilter, setProfessor] = useState("");
+  // console.log(params);
+
+  const [materialFilter, setMaterial] = useState("");
+  const [classFilter, setClass] = useState("");
+  const [departmentFilter, setDepartment] = useState("");
+  const [semesterFilter, setSemester] = useState("");
+  const [yearFilter, setYear] = useState("");
+  const [professorFilter, setProfessor] = useState("");
+
+  const filterCallBack = (filterData) => {
+    // if filters have been removed the length will be 0
+    if (filterData.length === 0) {
+      setMaterial("");
+      setClass("");
+      setDepartment("");
+      setSemester("");
+      setYear("");
+      setProfessor("");
+    }
+    else {
+      for (const filter in filterData) {
+        console.log(filterData[filter]);
+        if(filterData[filter][0] === "type") {
+          setMaterial(filterData[filter][1]);
+        }
+        else if(filterData[filter][0] === "class") {
+          setClass(filterData[filter][1]);
+        }
+        else if(filterData[filter][0] === "department") {
+          setDepartment(filterData[filter][1]);
+        }
+        else if(filterData[filter][0] === "semester") {
+          setSemester(filterData[filter][1]);
+        }
+        else if(filterData[filter][0] === "year") {
+          setYear(filterData[filter][1]);
+        }
+        else if(filterData[filter][0] === "professor") {
+          setProfessor(filterData[filter][1]);
+        }
+      }
+    }
+  };
 
   // const updateMaterial = val => { setMaterial(val); };
   // const updateClass = val => { setClass(val); };
@@ -38,7 +75,7 @@ function HomePage() {
       for(const file in resultArray[0]) {
         // console.log(resultArray[0][file]);
         files.push(resultArray[0][file]);
-        console.log(files[file]);
+        // console.log(files[file]);
       }
       setFileInfo(files);
       setLoading(false);
@@ -56,61 +93,47 @@ function HomePage() {
     )
   }
 
-  // for(const file in data.files) {
-  //   fileInfo.push(data.files[file]);
-  // }
-
-  // useEffect(() => {
-  //   console.log('useEffect');
-  //   fileInfo = [];
-  //   var filtered = true
-  //   for(const file in data.files) {
-  //     filtered = true;
-  //     if(materialFilter !== "") {
-  //       if(data.files[file].type !== materialFilter) {
-  //         filtered = false;
-  //       }
-  //     }
-  //     if(classFilter !== "") {
-  //       if(data.files[file].class !== classFilter) {
-  //         filtered = false;
-  //       }
-  //     }
-  //     if(departmentFilter !== "") {
-  //       if(data.files[file].department !== departmentFilter) {
-  //         filtered = false;
-  //       }
-  //     }
-  //     if(semesterFilter !== "") {
-  //       if(data.files[file].semester !== semesterFilter) {
-  //         filtered = false;
-  //       }
-  //     }
-  //     if(yearFilter !== "") {
-  //       if(data.files[file].year !== yearFilter) {
-  //         filtered = false;
-  //       }
-  //     }
-  //     if(professorFilter !== "") {
-  //       if(data.files[file].professor !== professorFilter) {
-  //         filtered = false;
-  //       }
-  //     }
-  //     if(filtered) {
-  //       fileInfo.push(data.files[file]);
-  //     }
-  //   }
-  // }, [materialFilter, classFilter, departmentFilter, semesterFilter, yearFilter, professorFilter]);
-  
-  console.log(files);
+  // console.log(files);
   return (
     <div className="HomePage">
       <NavBar/>
       <div id="contentWrapper">
-        <Filter onChange={onFilterChange}/>
+        <Filter filterCall={filterCallBack}/>
         <div id="files">
           {fileInfo.map((file) => {
-            return <FileCard key={file.mId}
+            let passAllFilters = true;
+            if (materialFilter) {
+              if (file.type !== materialFilter) {
+                passAllFilters = false;
+              }
+            }
+            if (classFilter) {
+              if (file.cKey !== classFilter) {
+                passAllFilters = false;
+              }
+            }
+            if (departmentFilter) {
+              if (file.dept !== departmentFilter) {
+                passAllFilters = false;
+              }
+            }
+            if (semesterFilter) {
+              if (file.semester !== semesterFilter) {
+                passAllFilters = false;
+              }
+            }
+            if (yearFilter) {
+              if (file.year !== yearFilter) {
+                passAllFilters = false;
+              }
+            }
+            if (professorFilter) {
+              if (file.professor !== professorFilter) {
+                passAllFilters = false;
+              }
+            }
+            if (passAllFilters) {
+              return <FileCard key={file.mId}
                             mid={file.mId}
                             class={file.cKey}
                             title={file.mTitle}
@@ -123,6 +146,7 @@ function HomePage() {
                             // updateYear={updateYear}
                             // updateProfessor={updateProfessor}
                   />
+            }
           })}
         </div>
       </div>
