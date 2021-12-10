@@ -53,10 +53,10 @@ INSERT INTO STUDENT (sId, fullName, major, email, pswd) VALUES
 ("2", "Sam Weik", "CS", "somethingelse@mst.edu", "password");
 
 INSERT INTO MATERIAL (cKey, `type`, mTitle, grade, semester, `year`, PDF) VALUES
-("CS2300", "Test I", "Biggest Exam of Your Life", "98/100", "Fall", "2021", "TEST"),
-("CS3800", "Test I", "Second Biggest Exam of Your Life", "20/100", "Fall", "2021", "TEST"), #LOAD_FILE('D:\MST\Junior\CS2300\Test Bank\test0.pdf'));
-("CS3800", "Test II", "Normal", "20/100", "Fall", "2021", "TEST"),
-("CS3800", "FINAL ", "HARD", "20/100", "Fall", "2021", "TEST");
+("CS2300", "Test", "Biggest Exam of Your Life", "98/100", "Fall", "2021", "TEST"),
+("CS3800", "Test", "Second Biggest Exam of Your Life", "20/100", "Fall", "2021", "TEST"), #LOAD_FILE('D:\MST\Junior\CS2300\Test Bank\test0.pdf'));
+("CS3800", "Test", "Normal", "20/100", "Fall", "2021", "TEST"),
+("CS3800", "Test", "HARD", "20/100", "Fall", "2021", "TEST");
 
 SELECT * FROM MATERIAL;
 SELECT * FROM CLASS;
