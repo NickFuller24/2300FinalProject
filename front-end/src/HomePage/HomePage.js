@@ -1,9 +1,10 @@
+import React, {useState, useEffect, useLayoutEffect} from 'react';
 import FileCard from '../FileCard/FileCard';
 import Filter from '../Filter/Filter';
 import NavBar from '../NavBar/NavBar';
 import './HomePage.css';
 import * as data from './test.json';
-import { React } from 'react';
+import Axios from 'axios';
 
 const onFilterChange = (ev) => {
   console.log(ev);
@@ -23,6 +24,17 @@ function HomePage() {
   // const updateSemester = val => { setSemester(val); };
   // const updateYear = val => { setYear(val); };
   // const updateProfessor = val => { setProfessor(val); };
+
+  // Sucessfully gets combined datatable of material and class from back-end
+  // Still needs to be added as gui file upon gui startup!
+  useEffect(()=> {
+    Axios.get('http://localhost:3001/api/loadFiles').then((response)=> {
+      const resultArray = Object.values(JSON.parse(JSON.stringify(response)));  
+      console.log(resultArray[0][0].mTitle);
+    });
+  }, []);
+
+
 
   var fileInfo = [];
   for(const file in data.files) {

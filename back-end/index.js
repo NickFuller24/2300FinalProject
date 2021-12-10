@@ -39,7 +39,7 @@ app.post("/api/insertFile", (req, res)=> {
 
   //Calls MySql to insert respective CLASS if not already existing
   const sqlInsertClass = 
-  "INSERT INTO class (cKey, title, professor, dept, school) VALUES (?,?,?,?,?)";
+  "INSERT INTO class (cKey, cTitle, professor, dept, school) VALUES (?,?,?,?,?)";
   db.query(sqlInsertClass, [cKey, classTitle, professor, dept, school], (err, result) => {
     if (err){
       console.log(err);
@@ -48,7 +48,7 @@ app.post("/api/insertFile", (req, res)=> {
 
   //Calls to MySQL to insert respective MATERIAL (must have existing CLASS to execute successfully)
   const sqlInsertMaterial = 
-  "INSERT INTO material (cKey, type, title, grade, semester, year, PDF) VALUES (?,?,?,?,?,?,?)";
+  "INSERT INTO material (cKey, type, mTitle, grade, semester, year, PDF) VALUES (?,?,?,?,?,?,?)";
   db.query(sqlInsertMaterial, [cKey, type, title, grade, semester, year, PDF], (err, result) => {
     if (err){
       console.log(err);
@@ -72,6 +72,18 @@ app.post("/api/insertFile", (req, res)=> {
     }
   });
  });
+
+ //Sending db data relating to material and class relations to front end
+ //-----REDO WHEN YOU COME UP WITH BETTER SCHEMA-----THIS ASSUMES cKey IS unique-----
+ app.get("/api/loadFiles", (req, res)=> {
+  const sqlMaterialSelect = 
+  "SELECT * FROM MATERIAL INNER JOIN CLASS ON MATERIAL.cKey=CLASS.cKey;";
+  db.query(sqlMaterialSelect, (err, results, fields) => {
+    if(err) throw err;
+    res.send(results);
+  });
+ });
+
 
 app.listen(3001, () => {
   console.log("running on port 3001");
