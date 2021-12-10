@@ -76,6 +76,16 @@ app.post("/api/insertFile", (req, res)=> {
   });
  });
 
+//Sending db data relating to student login
+ app.get("/api/verifyLogin", (req, res)=> {
+  const sqlMaterialSelect = 
+  "SELECT * FROM STUDENT;";
+  db.query(sqlMaterialSelect, (err, results, fields) => {
+    if(err) throw err;
+    res.send(results);
+  });
+ });
+
 
 app.listen(3001, () => {
   console.log("running on port 3001");

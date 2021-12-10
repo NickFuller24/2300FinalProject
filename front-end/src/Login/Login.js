@@ -2,6 +2,7 @@ import React from 'react';
 import './Login.css';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Axios from 'axios';
 
 // import * as data from '../Users/users.json';
 
@@ -15,6 +16,16 @@ const AccountLink = styled(Link)`
 `;
 
 const Login = () =>{
+
+  //Retrieve student data from back-end for comparison
+  const confirmLogin = (en) => {
+  // Sucessfully gets students from back-end
+  Axios.get('http://localhost:3001/api/verifyLogin').then((response)=> {
+    const resultArray = Object.values(JSON.parse(JSON.stringify(response)));  
+    console.log(resultArray[0]);    
+  });
+};
+
   // console.log(fileInfo);
   return (
     <div className="Login">
@@ -25,12 +36,12 @@ const Login = () =>{
           </div>
           <div id="userAndPass">
             <label className="loginLabel" for="email">Email:</label>
-            <input key="email" id="email" type="email" required />
+            <input key="email" id="email" type="email" required/>
             <label className="loginLabel" for="password">Password:</label>
-            <input key="password" id="password" type="password" required />
+            <input key="password" id="password" type="password" required/>
           </div>
           <div id="loginButton">
-            <button>LOGIN</button>
+            <button onClick={confirmLogin}>LOGIN</button>
           </div>
         </form>
         <div id="accountWrapper">
