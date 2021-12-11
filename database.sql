@@ -47,17 +47,17 @@ CREATE TABLE Saved (
 #----------Start of insertions for testing----------#
 INSERT INTO STUDENT (sId, fullName, major, email, pswd) VALUES 
 ("1255", "Garrett Mason", "CS", "gmmncf@mst.edu", "password"),
-("3142", "Nick Fuller", "CS", "something@mst.edu", "password"),
+("3142", "Nick Fuller", "CS", "nbfmgp@mst.edu", "password"),
 ("8607", "Sam Weik", "CS", "somethingelse@mst.edu", "password");
 
 INSERT INTO CLASS (cId, cKey, cTitle, professor, dept, school) VALUES
-("CS2300Sam YeungMST", "CS2300", "Databases", "Sam Yeung", "CS", "MST"),
+("CS2300San YeungMST", "CS2300", "Databases", "San Yeung", "CS", "MST"),
 ("CS3800Josh WilkersonMST", "CS3800", "OS", "Josh Wilkerson", "CS", "MST"),
 ("CS3800Some GuyMST", "CS3800", "OS", "Some Guy", "CS", "MST"),
 ("Econ1200Radu PuslengheaMST", "Econ1200", "Macro Economics", "Radu Puslenghea", "Econ", "MST");
 
 INSERT INTO MATERIAL (cId, `type`, mTitle, grade, semester, `year`, PDF) VALUES
-("CS2300Sam YeungMST", "Test", "Biggest Exam of Your Life", "98/100", "Fall", "2021", "PDF"),
+("CS2300San YeungMST", "Test", "Biggest Exam of Your Life", "98/100", "Fall", "2021", "PDF"),
 ("CS3800Josh WilkersonMST", "Test", "Exam II", "89/100", "Fall", "2021", "PDF"),
 ("CS3800Josh WilkersonMST", "Study Guide", "Final Resource", "96/100", "Fall", "2021", "PDF"),
 ("CS3800Some GuyMST", "Test", "Exam I", "96/100", "Fall", "2021", "PDF"),
