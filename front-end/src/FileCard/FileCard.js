@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { GoFile } from "react-icons/go";
+import {IconContext} from "react-icons";
 
 const CardWrapper = styled.div`
   width: 400px;
@@ -37,9 +39,10 @@ const StyledLink = styled(Link)`
 
 const FileCard = (props) => {
   return (
+    <IconContext.Provider value={{color: "#003049", size:"20em"}}>
     <StyledLink to={"/file/" + props.mid}>
       <CardWrapper>
-        <PDFWrapper/>
+        <GoFile/>
         <Category>
           <Title>Title:</Title>
           <Description>{props.title}</Description>
@@ -58,7 +61,9 @@ const FileCard = (props) => {
         </Category>
       </CardWrapper>
     </StyledLink>
+    </IconContext.Provider>
   );
+
 };
 
 export default FileCard;

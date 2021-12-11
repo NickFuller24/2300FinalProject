@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import Axios from 'axios';
+import { GoFile } from "react-icons/go";
+import {IconContext} from "react-icons";
 
 const CardWrapper = styled.div`
   width: 100vw;
@@ -98,12 +100,13 @@ const FileExpanded = (props) => {
     if(fileInfo[file].mId === parseInt(params.id)) {
       return (
         <div className="FileExpanded">
+          <IconContext.Provider value={{color: "#003049", size:"40em"}}>
           <NavBar/>
           <NavWrapper>
             <NavLink><HomeLink to="/">Return to Home</HomeLink></NavLink>
           </NavWrapper>
           <CardWrapper>
-            <PDFWrapper/>
+            <GoFile/>
             <TextWrapper>
               <Category>
                 <Title>Class:</Title>
@@ -135,6 +138,7 @@ const FileExpanded = (props) => {
               </Category>
             </TextWrapper>
           </CardWrapper>
+          </IconContext.Provider>
         </div>
       );
     }
